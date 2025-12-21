@@ -1,0 +1,15 @@
+*.iso
+*.d
+*.o
+*.a
+*.log
+*.bin
+*.sys
+*.status
+/var
+/root
+/cc
+/Makefile
+/mos/boot
+/var/autom4te.cache
+/var/configure

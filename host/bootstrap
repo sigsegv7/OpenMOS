@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+mkdir -p var/
+mkdir -p var/root/usr/include/
+
+if [[ ! -d var/cc/toolchain ]]
+then
+    git clone https://github.com/sigsegv7/osmora-toolchain var/cc/toolchain
+fi
+
+if [[ ! -d mos/boot ]]
+then
+    git clone https://github.com/limine-bootloader/limine.git --branch=v9.3.0-binary --depth=1 mos/boot/limine/
+    make -C mos/boot/limine
+fi

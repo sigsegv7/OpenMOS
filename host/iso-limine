@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+ISO=live-mos.iso
+
+mkdir -p iso_root/boot/
+
+# Copy the kernel to the ISO root
+cp mos/sys/sys.mos iso_root/boot
+
+# Copy boot files
+cp admin/conf/limine.conf mos/boot/limine/limine-bios.sys \
+    mos/boot/limine/limine-bios-cd.bin \
+    mos/boot/limine/limine-uefi-cd.bin \
+    iso_root/
+
+# Generate the ISO
+xorriso -as mkisofs -b limine-bios-cd.bin -no-emul-boot -boot-load-size 4 \
+        -boot-info-table --efi-boot limine-uefi-cd.bin -efi-boot-part \
+		--efi-boot-image --protective-msdos-label iso_root/ -o $ISO 1>/dev/null
+
+mos/boot/limine/limine bios-install $ISO 1>/dev/null
+rm -rf iso_root
