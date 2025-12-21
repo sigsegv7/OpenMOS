@@ -5,6 +5,7 @@
 *.log
 *.bin
 *.sys
+*.mos
 *.status
 /var
 /root
