@@ -3,7 +3,16 @@
  * Provided under the BSD-3 clause.
  */
 
+#include <kern/trace.h>
 #include <mu/uart.h>
+
+#define write_boot_header()                     \
+    trace_raw(                                  \
+        "=========  M  /  O  S  ========\n"     \
+        "Copyright (c) 2025, Ian Moffett\n"     \
+        "===============================\n"     \
+        "[ booting m/os ... ]"                  \
+    );
 
 /* Forward declaration */
 void kern_main(void);
@@ -13,4 +22,7 @@ kern_main(void)
 {
     /* Initialize platform UARTs */
     mu_uart_init();
+
+    /* Write the boot header */
+    write_boot_header();
 }
