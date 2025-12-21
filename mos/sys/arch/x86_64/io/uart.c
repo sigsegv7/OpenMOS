@@ -42,7 +42,7 @@ init_uart(USHORT port)
 }
 
 void
-mu_uart_write(const char *s, USIZE len)
+mu_uart_writed(const char *s, USIZE len)
 {
     for (USIZE i = 0; i < len; ++i) {
         md_outb(DEFAULT_PORT, s[i]);
