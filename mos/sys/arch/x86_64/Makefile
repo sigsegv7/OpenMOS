@@ -20,12 +20,15 @@ CFLAGS =                    	\
 	-I../../../../usr/sdk/inc/	\
 	$(SYS_CFLAGS)
 
-LDFLAGS = -Tadmin/mos.lds
+LDFLAGS = 						\
+	-Tadmin/mos.lds 			\
+	-L../../../../usr/sdk/ 		\
+	-lmos
 MOS_OUT = ../../sys.mos
 
 .PHONY: all
 all: $(OFILES) $(ASMOFILES)
-	$(LD) $(LDFLAGS) $(MISC_OFILES) -o $(MOS_OUT)
+	$(LD) $(MISC_OFILES) $(LDFLAGS) -o $(MOS_OUT)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
