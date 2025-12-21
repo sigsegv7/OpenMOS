@@ -5,9 +5,13 @@
 
     .text
     .globl _start
+    .globl kern_main
 _start:
     cli
     cld
+
+    xor %rbp, %rbp      /* Terminate callstack */
+    call kern_main      /* Call kernel main */
 
 1:  cli
     hlt
