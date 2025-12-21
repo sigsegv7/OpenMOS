@@ -12,5 +12,6 @@
 /cc
 /Makefile
 /mos/boot
+/mos/sys/target
 /var/autom4te.cache
 /var/configure

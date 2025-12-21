@@ -11,6 +11,11 @@ CC =
 LD =
 
 SYS_CFLAGS =
+CFLAGS =                    	\
+	-I ../../target/inc/		\
+	-I../../../../usr/sdk/inc/	\
+	$(SYS_CFLAGS)
+
 LDFLAGS = -Tadmin/mos.lds
 MOS_OUT = ../../sys.mos
 
@@ -19,4 +24,4 @@ all: $(ASMOFILES)
 	$(LD) $(LDFLAGS) $(MISC_OFILES) -o $(MOS_OUT)
 
 %.S.o: %.S
-	$(CC) $(SYS_CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@

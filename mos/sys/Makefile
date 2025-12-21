@@ -10,7 +10,7 @@ SYS_CFLAGS =
 ARCH =
 
 .PHONY: all
-all: kern arch
+all: target kern arch
 
 .PHONY: kern
 kern:
@@ -19,3 +19,8 @@ kern:
 .PHONY: arch
 arch:
 	cd arch/$(ARCH); make CC=$(CC) LD=$(LD) SYS_CFLAGS="$(SYS_CFLAGS)"
+
+.PHONY: target
+target:
+	mkdir -p target/inc/md/
+	rsync -avr inc/arch/$(ARCH)/* target/inc/md/

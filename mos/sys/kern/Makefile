@@ -7,7 +7,10 @@ CFILES = $(shell find . -name "*.c")
 OFILES = $(CFILES:.c=.o)
 
 SYS_CFLAGS =
-CFLAGS = $(SYS_CFLAGS) -I../../../usr/sdk/inc/
+CFLAGS = 					\
+	$(SYS_CFLAGS) 			\
+	-I../../../usr/sdk/inc/ \
+	-I../target/inc/
 
 .PHONY: all
 all: $(OFILES)
