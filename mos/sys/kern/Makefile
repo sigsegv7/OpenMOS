@@ -10,6 +10,7 @@ SYS_CFLAGS =
 CFLAGS = 					\
 	$(SYS_CFLAGS) 			\
 	-I../../../usr/sdk/inc/ \
+	-I../inc/				\
 	-I../target/inc/
 
 .PHONY: all
