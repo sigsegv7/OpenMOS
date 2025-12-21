@@ -8,6 +8,7 @@ QEMU = qemu-system-$(ARCH)
 
 CC = $(shell pwd)/var/cc/gcc/bin/$(ARCH)-pc-osmora-gcc
 LD = $(shell pwd)/var/cc/toolchain/build-binutils/bin/$(ARCH)-pc-osmora-ld
+AR = $(shell pwd)/var/cc/toolchain/build-binutils/bin/$(ARCH)-pc-osmora-ar
 
 SYS_CFLAGS =			\
 	-nostdlib			\
