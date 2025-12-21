@@ -39,6 +39,9 @@ init_uart(USHORT port)
     /* 38400 baud */
     md_outb(UART_DIVLOW(port), 0x03);
     md_outb(UART_DIVHIGH(port), 0x00);
+
+    reg &= ~UART_LCR_DLAB;
+    md_outb(UART_LCR(port), reg);
 }
 
 void
