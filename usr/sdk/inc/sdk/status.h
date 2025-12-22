@@ -17,6 +17,7 @@
 #define STATUS_BUSY         5       /* Resource busy */
 #define STATUS_DENIED       6       /* Access to resource denied */
 #define STATUS_NO_MEMORY    7       /* Out of memory */
+#define STATUS_NAME_TOO_LONG 8      /* Name is too long */
 
 typedef LONG MOS_STATUS;
 
