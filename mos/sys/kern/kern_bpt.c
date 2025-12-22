@@ -35,6 +35,20 @@ bpt_get_vars(BPT_VARS *res)
 }
 
 MOS_STATUS
+bpt_get_mementry(USIZE index, BPT_MEMENTRY *res)
+{
+    if (res == NULL) {
+        return STATUS_INVALID_ARG;
+    }
+
+    if (global_hooks.get_mementry == NULL) {
+        return STATUS_IO_ERROR;
+    }
+
+    return global_hooks.get_mementry(index, res);
+}
+
+MOS_STATUS
 bpt_init(void)
 {
     MOS_STATUS status = STATUS_INVALID_ARG;
