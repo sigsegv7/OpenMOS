@@ -20,3 +20,15 @@ trace_raw(const char *str)
     len = strlen(str);
     mu_uart_writed(str, len);
 }
+
+void
+trace(const char *fmt, ...)
+{
+    char buf[TRACE_BUF_LEN];
+    va_list ap;
+
+    va_start(ap, fmt);
+    vsnprintf(buf, sizeof(buf), fmt, ap);
+    trace_raw(buf);
+    va_end(ap);
+}
