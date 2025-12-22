@@ -15,4 +15,16 @@
  */
 USIZE strlen(const char *str);
 
+/*
+ * Copy a variable number of bytes from one memory location
+ * to another.
+ *
+ * @dest: Destination buffer
+ * @src: Source buffer
+ * @count: Byte count
+ *
+ * Returns the base of `dest' on success
+ */
+void *memcpy(void *dest, const void *src, USIZE count);
+
 #endif  /* !_SDK_STRING_H_ */
