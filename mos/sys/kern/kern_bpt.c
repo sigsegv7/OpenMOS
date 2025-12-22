@@ -27,6 +27,10 @@ bpt_get_vars(BPT_VARS *res)
         return STATUS_FAILURE;
     }
 
+    if (global_hooks.get_vars == NULL) {
+        return STATUS_IO_ERROR;
+    }
+
     return global_hooks.get_vars(res);
 }
 
