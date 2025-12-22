@@ -29,6 +29,17 @@ USIZE strlen(const char *str);
 void *memcpy(void *dest, const void *src, USIZE count);
 
 /*
+ * Compare two strings to see if they are equal.
+ *
+ * @s1: First string
+ * @s2: Second string
+ *
+ * Returns the differences between the two string, zero if
+ * equal.
+ */
+int strcmp(const char *s1, const char *s2);
+
+/*
  * Convert a given value into a string based on a
  * specific radix/base
  *
