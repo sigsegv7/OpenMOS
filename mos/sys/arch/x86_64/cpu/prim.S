@@ -7,6 +7,7 @@
     .globl mu_cpu_halt
     .globl mu_irq_state
     .globl mu_irq_setmask
+    .globl mu_cpu_pause
     .globl mu_cpu_aswap
 mu_cpu_halt:
     hlt
