@@ -11,7 +11,7 @@
         "=========  M  /  O  S  ========\n"     \
         "Copyright (c) 2025, Ian Moffett\n"     \
         "===============================\n"     \
-        "[ booting m/os ... ]"                  \
+        "[ booting m/os ... ]\n"                \
     );
 
 /* Forward declaration */
