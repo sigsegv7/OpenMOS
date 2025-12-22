@@ -23,6 +23,17 @@ BOOL mu_irq_state(void);
 void mu_irq_setmask(BOOL mask);
 
 /*
+ * Perform an atomic swap operation
+ *
+ * @p: Memory area to store `val' to
+ * @val: Value to write to `p'
+ *
+ * Returns the value at `p' before `val' was
+ * written
+ */
+USIZE mu_cpu_aswap(USIZE *p, USIZE val);
+
+/*
  * Halt the current processor core
  */
 void mu_cpu_halt(void);
