@@ -3,6 +3,7 @@
  * Provided under the BSD-3 clause.
  */
 
+    .text
     .globl mu_cpu_halt
     .globl mu_irq_state
     .globl mu_irq_setmask
