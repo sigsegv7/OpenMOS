@@ -14,7 +14,7 @@ all: target kern arch
 
 .PHONY: kern
 kern:
-	cd kern/; make CC=$(CC) LD=$(LD) SYS_CFLAGS="$(SYS_CFLAGS)"
+	cd kern/; make CC=$(CC) LD=$(LD) SYS_CFLAGS="$(SYS_CFLAGS)" BOOT_PROTO=$(BOOT_PROTO)
 
 .PHONY: arch
 arch:

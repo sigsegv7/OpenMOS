@@ -4,6 +4,7 @@
  */
 
 #include <kern/trace.h>
+#include <kern/bpt.h>
 #include <mu/uart.h>
 
 #define write_boot_header()                     \
@@ -25,4 +26,7 @@ kern_main(void)
 
     /* Write the boot header */
     write_boot_header();
+
+    /* Initialize the boot protocol translation layer */
+    bpt_init();
 }

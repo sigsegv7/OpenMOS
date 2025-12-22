@@ -3,6 +3,7 @@
 # Provided under the BSD-3 clause.
 #
 
+BOOT_PROTO = limine
 ARCH = x86_64
 QEMU = qemu-system-$(ARCH)
 
