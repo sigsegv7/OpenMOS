@@ -24,3 +24,7 @@ arch:
 target:
 	mkdir -p target/inc/md/
 	rsync -avr inc/arch/$(ARCH)/* target/inc/md/
+
+.PHONY: clean
+clean:
+	cd arch/$(ARCH); make clean

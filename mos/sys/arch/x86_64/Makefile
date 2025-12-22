@@ -35,3 +35,7 @@ all: $(OFILES) $(ASMOFILES)
 
 %.S.o: %.S
 	$(CC) $(CFLAGS) -c $< -o $@
+
+.PHONY: clean
+clean:
+	rm $(MISC_OFILES)
