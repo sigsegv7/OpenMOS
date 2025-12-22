@@ -27,4 +27,16 @@ USIZE strlen(const char *str);
  */
 void *memcpy(void *dest, const void *src, USIZE count);
 
+/*
+ * Convert a given value into a string based on a
+ * specific radix/base
+ *
+ * @value: Value to convert
+ * @buf: Buffer to copy to
+ * @base: Radix
+ *
+ * Returns `buf' on success
+ */
+char *itoa(QUAD value, char *buf, int base);
+
 #endif  /* !_SDK_STRING_H_ */
