@@ -6,7 +6,8 @@
 #ifndef _SDK_STRING_H_
 #define _SDK_STRING_H_ 1
 
- #include <sdk/types.h>
+#include <sdk/types.h>
+#include <sdk/stdarg.h>
 
 /*
  * Returns the length of a string
@@ -38,5 +39,24 @@ void *memcpy(void *dest, const void *src, USIZE count);
  * Returns `buf' on success
  */
 char *itoa(QUAD value, char *buf, int base);
+
+/*
+ * Write a formatted string to a buffer
+ *
+ * @s: Target buffer
+ * @size: Maximum buffer size
+ * @fmt: Format string
+ * @<...>: Args
+ */
+int snprintf(char *s, USIZE size, const char *fmt, ...);
+
+/*
+ * Write a formatted string to a buffer using a va_list
+ *
+ * @s: Target buffer
+ * @size: Maximum buffer size
+ * @ap: Args pointer
+ */
+int vsnprintf(char *s, USIZE size, const char *fmt, va_list ap);
 
 #endif  /* !_SDK_STRING_H_ */
