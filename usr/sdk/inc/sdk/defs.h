@@ -11,5 +11,6 @@
 #define ALIGN(n)        ATTR(aligned((n)))
 #define NO_RETURN       ATTR(no_return)
 #define ALWAYS_INLINE   ATTR(always_inline)
+#define PACKED          ATTR(packed)
 
 #endif  /* !_SDK_DEFS_H_ */
