@@ -9,6 +9,16 @@
 #include <sdk/types.h>
 
 /*
+ * The processor control region represents the currently
+ * running processor
+ *
+ * @logical_id: Assigned by us
+ */
+typedef struct {
+    UBYTE logical_id;
+} PCR;
+
+/*
  * Get the current IRQ state
  *
  * (TRUE: IRQs unmasked, FALSE: IRQs masked)
@@ -32,6 +42,13 @@ void mu_irq_setmask(BOOL mask);
  * written
  */
 USIZE mu_cpu_aswap(USIZE *p, USIZE val);
+
+/*
+ * Configure the current processor
+ *
+ * @pcr: Processor control region
+ */
+void mu_cpu_conf(PCR *pcr);
 
 /*
  * Halt the current processor core

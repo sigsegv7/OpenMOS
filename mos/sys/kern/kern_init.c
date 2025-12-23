@@ -6,6 +6,7 @@
 #include <kern/trace.h>
 #include <kern/bpt.h>
 #include <mu/uart.h>
+#include <mu/cpu.h>
 #include <mm/pmm.h>
 
 #define write_boot_header()                     \
@@ -18,6 +19,8 @@
 
 /* Forward declaration */
 void kern_main(void);
+
+static PCR bsp_pcr;
 
 void
 kern_main(void)
@@ -33,4 +36,7 @@ kern_main(void)
 
     /* Initialize the physical memory manager */
     pmm_init();
+
+    /* Initialize the BSP PCR */
+    mu_cpu_conf(&bsp_pcr);
 }
