@@ -6,12 +6,16 @@
 #ifndef _MACHINE_IDT_H_
 #define _MACHINE_IDT_H_ 1
 
+#ifndef __ASSEMBLER__
 #include <sdk/types.h>
 #include <sdk/defs.h>
+#endif  /* !__ASSEMBLER__ */
 
 #define IDT_INT_GATE    0x8E
 #define IDT_TRAP_GATE   0x8F
 #define IDT_USER_GATE   0xEE
+
+#ifndef __ASSEMBLER__
 
 /*
  * Represents a 64-bit interrupt gate descriptor
@@ -61,4 +65,5 @@ void md_idt_set_entry(UBYTE vector, UPTR isr, UBYTE type, UBYTE ist);
  */
 void md_idt_load(void);
 
+#endif  /* !__ASSEMBLER__ */
 #endif  /* !_MACHINE_IDT_H_ */
