@@ -29,6 +29,17 @@ USIZE strlen(const char *str);
 void *memcpy(void *dest, const void *src, USIZE count);
 
 /*
+ * Fill a memory area with a number of bytes
+ *
+ * @s: Target memory area
+ * @c: Bytes to fill with
+ * @n: Number of bytes
+ *
+ * Returns 's' on success
+ */
+void *memset(void *s, int c, USIZE n);
+
+/*
  * Compare two strings to see if they are equal.
  *
  * @s1: First string
