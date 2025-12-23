@@ -15,6 +15,9 @@ _start:
     lea g_GDTR(%rip), %rdi      /* BSP GDTR base */
     call md_gdt_load            /* Load it */
 
+    call md_set_vectors         /* Set interrupt vectors */
+    call md_idt_load            /* Load the IDT */
+
     xor %rbp, %rbp      /* Terminate callstack */
     call kern_main      /* Call kernel main */
 
