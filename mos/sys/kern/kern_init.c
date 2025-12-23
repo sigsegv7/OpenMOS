@@ -6,6 +6,7 @@
 #include <kern/trace.h>
 #include <kern/bpt.h>
 #include <mu/uart.h>
+#include <mm/pmm.h>
 
 #define write_boot_header()                     \
     trace_raw(                                  \
@@ -29,4 +30,7 @@ kern_main(void)
 
     /* Initialize the boot protocol translation layer */
     bpt_init();
+
+    /* Initialize the physical memory manager */
+    pmm_init();
 }

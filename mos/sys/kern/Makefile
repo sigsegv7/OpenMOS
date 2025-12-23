@@ -5,6 +5,7 @@
 
 CFILES = $(shell find . -name "*.c")
 CFILES += $(shell find ../bpt -name "*.c")
+CFILES += $(shell find ../mm -name "*.c")
 OFILES = $(CFILES:.c=.o)
 
 SYS_CFLAGS =
