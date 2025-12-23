@@ -8,6 +8,7 @@
 
 #include <sdk/types.h>
 #include <sdk/status.h>
+#include <sdk/defs.h>
 
 /*
  * Represents memory map entry types
@@ -79,5 +80,17 @@ MOS_STATUS bpt_get_mementry(USIZE index, BPT_MEMENTRY *res);
  * Initialize the boot protocol translation layer
  */
 MOS_STATUS bpt_init(void);
+
+ALWAYS_INLINE static inline UPTR
+bpt_kernel_base(void)
+{
+    BPT_VARS vars;
+
+    if (bpt_get_vars(&vars) != STATUS_SUCCESS) {
+        return 0;
+    }
+
+    return vars.kernel_base;
+}
 
 #endif  /* !_KERN_BPT_H_ */
