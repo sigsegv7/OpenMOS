@@ -20,9 +20,11 @@ struct _OBJECT_HOOKS;
  * in the MOS object manager.
  *
  * @OBJECT_NULL: NULL object - all operations are ignored
+ * @OBJECT_DIR: Directory object
  */
 typedef enum {
     OBJECT_NULL,
+    OBJECT_DIR
 } OBJECT_TYPE;
 
 /*
