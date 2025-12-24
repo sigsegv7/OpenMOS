@@ -10,6 +10,12 @@
 
 #define dtrace(fmt, ...) trace("cpu: " fmt, ##__VA_ARGS__)
 
+PCR *
+mu_cpu_self(void)
+{
+    return (PCR *)md_rdmsr(IA32_GS_BASE);
+}
+
 void
 mu_cpu_conf(PCR *pcr)
 {

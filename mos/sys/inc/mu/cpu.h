@@ -61,4 +61,9 @@ void mu_cpu_halt(void);
  */
 void mu_cpu_pause(void);
 
+/*
+ * Get a reference to the current processor
+ */
+PCR *mu_cpu_self(void);
+
 #endif  /* !_MU_CPU_H_ */
