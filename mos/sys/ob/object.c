@@ -5,16 +5,24 @@
 
 #include <sdk/status.h>
 #include <sdk/atomic.h>
+#include <sdk/string.h>
 #include <ob/object.h>
 #include <mm/pool.h>
 
 MOS_STATUS
-ob_new_object(OBJECT_TYPE type, OBJECT_HOOKS *hooks, MOS_OBJECT **res)
+ob_new_object(const char *name, OBJECT_TYPE type, OBJECT_HOOKS *hooks, MOS_OBJECT **res)
 {
     MOS_OBJECT *object;
+    USIZE name_len;
 
     if (res == NULL || hooks == NULL) {
         return STATUS_INVALID_ARG;
+    }
+
+    /* Truncate the name if needed */
+    name_len = strlen(name);
+    if (name_len >= OBJECT_NAMESIZE_MAX) {
+        name_len = OBJECT_NAMESIZE_MAX - 1;
     }
 
     object = mm_pool_allocate(sizeof(*object));
@@ -22,6 +30,7 @@ ob_new_object(OBJECT_TYPE type, OBJECT_HOOKS *hooks, MOS_OBJECT **res)
         return STATUS_NO_MEMORY;
     }
 
+    memcpy(object->name, name, name_len);
     object->type  = type;
     object->data  = NULL;
     object->ref   = 1;

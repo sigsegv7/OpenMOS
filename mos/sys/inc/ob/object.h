@@ -10,6 +10,8 @@
 #include <sdk/types.h>
 #include <sdk/status.h>
 
+#define OBJECT_NAMESIZE_MAX 64
+
 /* Forward declarations */
 struct _OBJECT_HOOKS;
 
@@ -27,6 +29,7 @@ typedef enum {
  * Represents an object which contains an opaque reference
  * to another object of varying type.
  *
+ * @name: Object name
  * @type: Object type
  * @data: Data this object references [based on type]
  * @ref:  Reference counter
@@ -34,6 +37,7 @@ typedef enum {
  * @link: Queue link
  */
 typedef struct _MOS_OBJECT {
+    char name[OBJECT_NAMESIZE_MAX];
     OBJECT_TYPE type;
     void *data;
     ULONG ref;
@@ -52,12 +56,14 @@ typedef struct _OBJECT_HOOKS {
 /*
  * Create a new system object.
  *
+ * @name: Object name
  * @type: Object type
+ * @hooks: Hooks to use
  * @res: Result pointer is written here
  */
 MOS_STATUS ob_new_object(
-    OBJECT_TYPE type, OBJECT_HOOKS *hooks,
-    MOS_OBJECT **res
+    const char *name, OBJECT_TYPE type,
+    OBJECT_HOOKS *hooks, MOS_OBJECT **res
 );
 
 /*
