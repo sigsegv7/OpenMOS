@@ -8,6 +8,7 @@
 #include <mu/uart.h>
 #include <mu/cpu.h>
 #include <mm/pmm.h>
+#include <mm/pool.h>
 
 #define write_boot_header()                     \
     trace_raw(                                  \
@@ -36,6 +37,9 @@ kern_main(void)
 
     /* Initialize the physical memory manager */
     pmm_init();
+
+    /* Initialize the pool manager */
+    mm_pool_init();
 
     /* Initialize the BSP PCR */
     mu_cpu_conf(&bsp_pcr);
