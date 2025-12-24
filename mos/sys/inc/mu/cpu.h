@@ -7,15 +7,21 @@
 #define _MU_CPU_H_ 1
 
 #include <sdk/types.h>
+#include <kern/spinlock.h>
+#include <mm/tlsf.h>
 
 /*
  * The processor control region represents the currently
  * running processor
  *
  * @logical_id: Assigned by us
+ * @tlsf: TLSF context
+ * @tlsf_lock: Protects the TLSF context
  */
 typedef struct {
     UBYTE logical_id;
+    tlsf_t tlsf;
+    SPINLOCK tlsf_lock;
 } PCR;
 
 /*

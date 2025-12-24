@@ -38,9 +38,9 @@ kern_main(void)
     /* Initialize the physical memory manager */
     pmm_init();
 
-    /* Initialize the pool manager */
-    mm_pool_init();
-
     /* Initialize the BSP PCR */
     mu_cpu_conf(&bsp_pcr);
+
+    /* Initialize the pool manager */
+    mm_pool_init(&bsp_pcr);
 }

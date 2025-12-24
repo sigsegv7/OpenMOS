@@ -8,6 +8,7 @@
 
 #include <sdk/types.h>
 #include <mm/tlsf.h>
+#include <mu/cpu.h>
 
 /*
  * Allocate a pool of a specific size
@@ -25,7 +26,9 @@ void mm_pool_free(void *pool);
 
 /*
  * Initialize the pool subsystem
+ *
+ * @pcr: Processor control region to fill in
  */
-void mm_pool_init(void);
+void mm_pool_init(PCR *pcr);
 
 #endif  /* !_MM_POOL_H_ */
