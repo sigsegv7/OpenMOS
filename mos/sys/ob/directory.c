@@ -4,6 +4,7 @@
  */
 
 #include <sdk/status.h>
+#include <sdk/atomic.h>
 #include <mm/pool.h>
 #include <ob/directory.h>
 #include <ob/object.h>
@@ -47,6 +48,29 @@ ob_new_directory(const char *name, MOS_OBJECT **res)
     TAILQ_INIT(&dir->list);
     ob->data = dir;
     *res = ob;
+    return STATUS_SUCCESS;
+}
+
+MOS_STATUS
+ob_append_directory(MOS_OBJECT *dir, MOS_OBJECT *obj)
+{
+    OBJECT_DIRECTORY *dirent;
+
+    if (dir == NULL || obj == NULL) {
+        return STATUS_INVALID_ARG;
+    }
+
+    if (dir->type != OBJECT_DIR) {
+        return STATUS_OBJECT_MISMATCH;
+    }
+
+    if ((dirent = dir->data) == NULL) {
+        return STATUS_IO_ERROR;
+    }
+
+    TAILQ_INSERT_TAIL(&dirent->list, obj, link);
+    atomic_inc_int(&obj->ref);
+    atomic_inc_64(&dirent->entry_count);
     return STATUS_SUCCESS;
 }
 

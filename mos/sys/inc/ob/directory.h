@@ -19,7 +19,7 @@
  */
 typedef struct {
     USIZE entry_count;
-    TAILQ_HEAD(, MOS_OBJECT) list;
+    TAILQ_HEAD(, _MOS_OBJECT) list;
 } OBJECT_DIRECTORY;
 
 /*
@@ -29,5 +29,13 @@ typedef struct {
  * @res: Directory object pointer is written here
  */
 MOS_STATUS ob_new_directory(const char *name, MOS_OBJECT **res);
+
+/*
+ * Append an object to a directory
+ *
+ * @dir: Directory to append object to
+ * @obj: Object to append
+ */
+MOS_STATUS ob_append_directory(MOS_OBJECT *dir, MOS_OBJECT *obj);
 
 #endif  /* !_OB_DIRECTORY_H_ */
