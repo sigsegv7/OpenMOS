@@ -18,6 +18,7 @@
 #define STATUS_DENIED       6       /* Access to resource denied */
 #define STATUS_NO_MEMORY    7       /* Out of memory */
 #define STATUS_NAME_TOO_LONG 8      /* Name is too long */
+#define STATUS_OBJECT_MISMATCH 9    /* Object type mismatch */
 
 typedef LONG MOS_STATUS;
 
